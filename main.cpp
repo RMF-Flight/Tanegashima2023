@@ -2,10 +2,10 @@
 #include "QEI.h"
 #include "DCMotor.h"
 
-#define RESOLUTION 100
-#define INT_TIME 0.005
+#define RESOLUTION 100 //なぜか100が一番うまくいく
+#define INT_TIME 0.005 //割り込みスパン
 
-
+//モータの設定
 DCMotor dcMotorR(D9, D10);
 DCMotor dcMotorL(D7,D2);
 
@@ -22,16 +22,14 @@ double encountAngle=0;
 int encountPulse=0;
 
 
-float spd1 = 0;
-
 void timer_warikomi()
 {
     
     //static float pre_sp1 = 0;
     
-    encountRev = Enc1.getAng_rev();
-    encountAngle = Enc1.getAngle();
-    encountPulse = Enc1.getPulses();
+    encountRev = Enc1.getAng_rev();//回転数（整数）
+    encountAngle = Enc1.getAngle();//回転角度
+    encountPulse = Enc1.getPulses();//出力された合計パルス
     //encount2 = Enc2.getPulses();
     //if (encount1 > encount2) encount_rot = encount1;
    // else encount_rot = encount2;
